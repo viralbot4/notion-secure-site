@@ -1,19 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sign Up - Notion Secure Site</title>
   <meta charset="UTF-8" />
+  <title>Sign Up - Notion Secure Site</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f3f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    p {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    a {
+      color: #28a745;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <h2>Create an Account</h2>
-  <form id="signupForm">
-    <input type="email" id="email" placeholder="Email" required /><br><br>
-    <input type="password" id="password" placeholder="Password" required /><br><br>
-    <button type="submit">Sign Up</button>
-  </form>
-  <p>Already have an account? <a href="index.html">Login here</a></p>
+  <div class="container">
+    <h2>Create Account</h2>
+    <form id="signupForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="index.html">Login here</a></p>
+  </div>
 
-  <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
     import {
@@ -39,7 +85,7 @@
       const password = document.getElementById("password").value;
 
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(() => {
           alert("Account created! Redirecting to dashboard...");
           window.location.href = "dashboard.html";
         })
