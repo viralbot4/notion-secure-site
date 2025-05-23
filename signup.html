@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sign Up - Notion Secure Site</title>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDnq-G88ZoaK1yCOkRqydocyUGKLv2ut5g",
+    authDomain: "notion--site.firebaseapp.com",
+    projectId: "notion--site",
+    storageBucket: "notion--site.firebasestorage.app",
+    messagingSenderId: "88263683783",
+    appId: "1:88263683783:web:07c95eee02e2d8446858e2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.signup = async function() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Account created! Please log in.");
+      window.location.href = "login.html";
+    } catch(e) {
+      alert(e.message);
+    }
+  }
+</script>
+</head>
+<body>
+<h1>Sign Up</h1>
+<input id="email" type="email" placeholder="Email" />
+<input id="password" type="password" placeholder="Password" />
+<button onclick="signup()">Sign Up</button>
+<p>Already have an account? <a href="login.html">Log in</a></p>
+</body>
+</html>
